@@ -10,7 +10,7 @@ const TotalAmount = ({ items }) => {
   });
 
   return (
-    <div className="border border-3 total-amount-container">
+    <div className="total-amount-container">
       <div className="p-2">
         <strong>Total</strong>
         <hr />

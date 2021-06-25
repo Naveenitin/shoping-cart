@@ -1,9 +1,9 @@
 const Item = ({ item, removeItem, quantityError, updateQuantity }) => {
   return (
-    <tr key={item.id}>
-      <td className="item-container">
-        <div className="item-details-container">
-          <div className="item-details">
+    <div className="d-flex flex-row p-0 m-2">
+      <div className="item-container flex-fill p-0 m-0 row align-middle">
+        <div className="item-details-container d-flex align-middle">
+          <div className="m-0 p-0 item-details">
             <img src={item.img_url} alt="item" height="40px" width="40px" />
             <p>{item.name}</p>
           </div>
@@ -14,9 +14,9 @@ const Item = ({ item, removeItem, quantityError, updateQuantity }) => {
             X
           </button>
         </div>
-      </td>
-      <td className="text-center">
-        <span className="input-group" style={{ maxWidth: '130px' }}>
+      </div>
+      <div className="d-flex flex-row p-0 m-0 ms-auto align-center">
+        <span className="input-group m-0 p-0">
           <button
             className="btn btn-outline-secondary"
             type="button"
@@ -65,9 +65,11 @@ const Item = ({ item, removeItem, quantityError, updateQuantity }) => {
             +
           </button>
         </span>
-      </td>
-      <td>{item.price}</td>
-    </tr>
+      </div>
+      <div className="d-flex align-center price">
+        <div>{item.price}</div>
+      </div>
+    </div>
   );
 };
 

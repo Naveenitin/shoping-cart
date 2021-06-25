@@ -1,36 +1,27 @@
 span {
   margin: 10px;
 }
-thead {
+.itemsList-heading {
   border-top: 1px solid #dee2e6;
   border-bottom: 1px solid #dee2e6;
 }
 .item-container {
   height: 50px;
   margin-top: 1rem;
-  display: flex;
-  align-items: center;
   padding: 0 1rem;
 }
 .item-details-container {
-  flex-basis: 400px;
-  display: flex;
-  align-items: center;
-  box-shadow: 1px 1px 5px #888888;
-  margin-right: 1rem;
+  box-shadow: 1px 1px 3px #888888;
+  border-radius: 10px;
 }
-
 .item-details {
   display: flex;
   height: 50px;
   align-items: center;
 }
-
 .item-details > img {
-  margin-left: 5px;
   margin-right: 1rem;
 }
-
 .item-details > p {
   margin: 0px auto;
   align-items: center;
@@ -41,11 +32,29 @@ thead {
 }
 .total-amount-container {
   width: 300px;
+  border-radius: 10px;
+  box-shadow: 1px 1px 3px #888888;
 }
 .total-amount {
   background-color: #888888;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 
-.price-container{
+.price-container {
   width: 100px;
+}
+
+.price {
+  height: 50px;
+  align-items: center;
+}
+.price div {
+  padding: auto 0;
+}
+
+.input-group{
+  max-width: 130px;
+  margin-left: 2rem !important;
+  margin-right: 1rem !important;
 }

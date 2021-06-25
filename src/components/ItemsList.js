@@ -19,15 +19,15 @@ const ItemsList = ({
 
   return (
     <div>
-      <table className="table table-borderless">
-        <thead>
-          <tr>
-            <th>&lt; items({items.length})</th>
-            <th className="text-center">Qty</th>
-            <th>Price</th>
-          </tr>
-        </thead>
-        <tbody>
+      <div>
+        <div className="itemsList-heading">
+          <div className="d-flex flex-row">
+            <div>&lt; items({items.length})</div>
+            <div className="ms-auto text-center">Qty&emsp;&emsp;&emsp;&emsp;</div>
+            <div>Price</div>
+          </div>
+        </div>
+        <div>
           {items.map((item) => (
             <Item
               item={item}
@@ -37,8 +37,8 @@ const ItemsList = ({
               key={item.id}
             />
           ))}
-        </tbody>
-      </table>
+        </div>
+      </div>
     </div>
   );
 };
