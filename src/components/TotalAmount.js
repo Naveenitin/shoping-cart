@@ -1,3 +1,5 @@
+import PriceContainer from './PriceContainer';
+
 const TotalAmount = ({ items }) => {
   const bill = { price: 0, discount: 0, typeDiscount: 0 };
   items.forEach((item) => {
@@ -12,37 +14,13 @@ const TotalAmount = ({ items }) => {
       <div className="p-2">
         <strong>Total</strong>
         <hr />
-        <div className="d-flex">
-          <div>Items ({items.length})</div>
-          <span className="price-container d-flex m-0 p-0  ms-auto">
-            <span className="m-0 p-0">:</span>
-            <span className="m-0 p-0 ms-auto">₹{bill.price}</span>
-          </span>
-        </div>
+        <PriceContainer desc={`Items(${items.length})`} amount={bill.price} />
         <br />
-        <div className="d-flex">
-          <div>Discount</div>
-          <div className="price-container d-flex m-0 p-0 ms-auto">
-            <span className="m-0 p-0">:</span>
-            <span className="m-0 p-0 ms-auto">-₹{bill.discount}</span>
-          </div>
-        </div>
-        <div className="d-flex">
-          <div>Type discount</div>
-          <div className="price-container d-flex m-0 p-0 ms-auto">
-            <span className="m-0 p-0">:</span>
-            <span className="m-0 p-0 ms-auto">-₹{bill.typeDiscount}</span>
-          </div>
-        </div>
+        <PriceContainer desc={`Discount`} amount={bill.discount} />
+        <PriceContainer desc={`Type discount`} amount={bill.typeDiscount} />
       </div>
-      <div className="total-amount p-2 d-flex">
-        <div>Items ({items.length})</div>
-        <div className="price-container d-flex m-0 p-0 ms-auto">
-          <span className="m-0 p-0">:</span>
-          <span className="m-0 p-0 ms-auto">
-            ₹{bill.price - bill.discount - bill.typeDiscount}
-          </span>
-        </div>
+      <div className="total-amount p-2">
+        <PriceContainer desc={`Order total`} amount={bill.typeDiscount} />
       </div>
     </div>
   );
