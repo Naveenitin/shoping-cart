@@ -10,14 +10,14 @@ const ShopingCart = ({ data }) => {
     item.qty = 1;
   });
 
-  const [items, setItems] = useState(data);
+  const [items, setItems] = useState([]);
 
   useEffect(() => {
     const localData = JSON.parse(localStorage.getItem('data'));
     if (localData !== null && localData !== undefined && localData.length !== 0)
       setItems(localData);
-    
-  }, []);
+    else setItems(data);
+  }, [data]);
 
   const updateQuantity = (id, update) => {
     const updatedItems = items.map((item) => {
@@ -31,7 +31,7 @@ const ShopingCart = ({ data }) => {
   };
 
   const quantityError = () => {
-    toast(`Please enter a valid quantity. [1-10]`, { type: 'error' });
+    toast(`Please enter a valid quantity. [1-100]`, { type: 'error' });
   };
 
   const removeItem = (id) => {
