@@ -1,4 +1,4 @@
-const TotalAmount = ({ reset, items }) => {
+const TotalAmount = ({ items }) => {
   const bill = { price: 0, discount: 0, typeDiscount: 0 };
   items.forEach((item) => {
     let price = item.qty * item.price;

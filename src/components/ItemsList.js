@@ -1,4 +1,4 @@
-const ItemsList = ({ items, updateQuantity, removeItem }) => {
+const ItemsList = ({ items, updateQuantity, removeItem, quantityError }) => {
   return (
     <div>
       <table className="table table-borderless">
@@ -15,7 +15,12 @@ const ItemsList = ({ items, updateQuantity, removeItem }) => {
               <td className="item-container">
                 <div className="item-details-container">
                   <div className="item-details">
-                    <img src={item.img_url} alt="item" height="40px" width="40px" />
+                    <img
+                      src={item.img_url}
+                      alt="item"
+                      height="40px"
+                      width="40px"
+                    />
                     <p>{item.name}</p>
                   </div>
                   <button
@@ -33,7 +38,7 @@ const ItemsList = ({ items, updateQuantity, removeItem }) => {
                     type="button"
                     onClick={(e) => {
                       if (item.qty > 1) updateQuantity(item.id, item.qty - 1);
-                      else console.log('You exceeded the limit');
+                      else quantityError();
                     }}
                   >
                     -
@@ -45,10 +50,15 @@ const ItemsList = ({ items, updateQuantity, removeItem }) => {
                     name="qty"
                     onChange={(e) => {
                       e.preventDefault();
+                      if (e.target.value > 10 || e.target.value < 0)
+                        quantityError();
                       updateQuantity(item.id, e.target.value);
                     }}
                     onBlur={(e) => {
-                      if (e.target.value === '') updateQuantity(item.id, 1);
+                      if (e.target.value === '') {
+                        updateQuantity(item.id, 1);
+                        quantityError();
+                      }
                     }}
                     required
                   />
@@ -57,7 +67,7 @@ const ItemsList = ({ items, updateQuantity, removeItem }) => {
                     type="button"
                     onClick={(e) => {
                       if (item.qty < 10) updateQuantity(item.id, item.qty + 1);
-                      else console.log('You exceeded the limit');
+                      else quantityError();
                     }}
                   >
                     +
