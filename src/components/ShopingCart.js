@@ -31,7 +31,7 @@ const ShopingCart = ({ data }) => {
   };
 
   const quantityError = () => {
-    toast(`Please enter a valid quantity.(1-10)`, { type: 'error' });
+    toast(`Please enter a valid quantity. [1-10]`, { type: 'error' });
   };
 
   const removeItem = (id) => {
@@ -62,6 +62,7 @@ const ShopingCart = ({ data }) => {
             updateQuantity={updateQuantity}
             removeItem={removeItem}
             quantityError={quantityError}
+            reset={reset}
           />
         </div>
         <div className="col-12 col-md-4">

@@ -1,4 +1,20 @@
-const ItemsList = ({ items, updateQuantity, removeItem, quantityError }) => {
+const ItemsList = ({
+  items,
+  updateQuantity,
+  removeItem,
+  quantityError,
+  reset,
+}) => {
+  if (items.length === 0)
+    return (
+      <div className="container text-center">
+        <h3>Your Cart is Empty :(</h3>
+        <button className="btn btn-primary" onClick={reset}>
+          Reset
+        </button>
+      </div>
+    );
+
   return (
     <div>
       <table className="table table-borderless">
@@ -55,7 +71,11 @@ const ItemsList = ({ items, updateQuantity, removeItem, quantityError }) => {
                       updateQuantity(item.id, e.target.value);
                     }}
                     onBlur={(e) => {
-                      if (e.target.value === '') {
+                      if (
+                        e.target.value === '' ||
+                        e.target.value > 10 ||
+                        e.target.value < 0
+                      ) {
                         updateQuantity(item.id, 1);
                         quantityError();
                       }
