@@ -15,7 +15,7 @@ const ItemsList = ({ items, updateQuantity, removeItem }) => {
               <td className="item-container">
                 <div className="item-details-container">
                   <div className="item-details">
-                    <img src={item.img_url} alt="item" />
+                    <img src={item.img_url} alt="item" height="40px" width="40px" />
                     <p>{item.name}</p>
                   </div>
                   <button
@@ -31,7 +31,10 @@ const ItemsList = ({ items, updateQuantity, removeItem }) => {
                   <button
                     className="btn btn-outline-secondary"
                     type="button"
-                    onClick={() => updateQuantity(item.id, item.qty - 1)}
+                    onClick={(e) => {
+                      if (item.qty > 1) updateQuantity(item.id, item.qty - 1);
+                      else console.log('You exceeded the limit');
+                    }}
                   >
                     -
                   </button>
@@ -42,18 +45,19 @@ const ItemsList = ({ items, updateQuantity, removeItem }) => {
                     name="qty"
                     onChange={(e) => {
                       e.preventDefault();
-                      updateQuantity(
-                        item.id,
-                        e.target.value ? e.target.value : 0
-                      );
+                      updateQuantity(item.id, e.target.value);
+                    }}
+                    onBlur={(e) => {
+                      if (e.target.value === '') updateQuantity(item.id, 1);
                     }}
                     required
                   />
                   <button
                     className="btn btn-outline-secondary"
                     type="button"
-                    onClick={() => {
-                      updateQuantity(item.id, item.qty + 1);
+                    onClick={(e) => {
+                      if (item.qty < 10) updateQuantity(item.id, item.qty + 1);
+                      else console.log('You exceeded the limit');
                     }}
                   >
                     +

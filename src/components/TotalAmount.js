@@ -12,19 +12,36 @@ const TotalAmount = ({ reset, items }) => {
       <div className="p-2">
         <strong>Total</strong>
         <hr />
-        <p>
-          Items({items.length}) : ₹{bill.price}
-        </p>
-        <p>
-          Dicount: -₹{bill.discount}
-          <br />
-          type discount : -₹{bill.typeDiscount}
-        </p>
+        <div className="d-flex">
+          <div>Items ({items.length})</div>
+          <span className="price-container d-flex m-0 p-0  ms-auto">
+            <span className="m-0 p-0">:</span>
+            <span className="m-0 p-0 ms-auto">₹{bill.price}</span>
+          </span>
+        </div>
+        <br />
+        <div className="d-flex">
+          <div>Discount</div>
+          <div className="price-container d-flex m-0 p-0 ms-auto">
+            <span className="m-0 p-0">:</span>
+            <span className="m-0 p-0 ms-auto">-₹{bill.discount}</span>
+          </div>
+        </div>
+        <div className="d-flex">
+          <div>Type discount</div>
+          <div className="price-container d-flex m-0 p-0 ms-auto">
+            <span className="m-0 p-0">:</span>
+            <span className="m-0 p-0 ms-auto">-₹{bill.typeDiscount}</span>
+          </div>
+        </div>
       </div>
-      <div>
-        <div className="total-amount p-2">
-          Order Total: ₹{bill.price - bill.discount - bill.typeDiscount}
-          <button onClick={reset}>Reset</button>
+      <div className="total-amount p-2 d-flex">
+        <div>Items ({items.length})</div>
+        <div className="price-container d-flex m-0 p-0 ms-auto">
+          <span className="m-0 p-0">:</span>
+          <span className="m-0 p-0 ms-auto">
+            ₹{bill.price - bill.discount - bill.typeDiscount}
+          </span>
         </div>
       </div>
     </div>

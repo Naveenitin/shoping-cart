@@ -20,10 +20,10 @@ const ShopingCart = ({ data }) => {
     setItems(updatedItems);
   };
 
-  const removeItem=(id)=>{
+  const removeItem = (id) => {
     const updatedItems = items.filter((item) => item.id !== id);
     setItems(updatedItems);
-  }
+  };
 
   const reset = () => {
     setItems(data);
@@ -35,11 +35,15 @@ const ShopingCart = ({ data }) => {
         <h1>Order Summary</h1>
       </div>
       <div className="row g-2">
-        <div className="col-8">
-          <ItemsList items={items} updateQuantity={updateQuantity} removeItem={removeItem} />
+        <div className="col-12 col-md-8">
+          <ItemsList
+            items={items}
+            updateQuantity={updateQuantity}
+            removeItem={removeItem}
+          />
         </div>
-        <div className="col-4">
-          <TotalAmount reset={reset} items={items} ms-auto/>
+        <div className="col-12 col-md-4">
+          <TotalAmount reset={reset} items={items} ms-auto />
         </div>
       </div>
     </div>

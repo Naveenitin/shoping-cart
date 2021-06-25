@@ -27,7 +27,7 @@ thead {
 }
 
 .item-details > img {
-  height: 50px;
+  margin-left: 5px;
   margin-right: 1rem;
 }
 
@@ -44,4 +44,8 @@ thead {
 }
 .total-amount {
   background-color: #888888;
+}
+
+.price-container{
+  width: 100px;
 }
