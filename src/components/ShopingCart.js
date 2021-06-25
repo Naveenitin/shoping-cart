@@ -16,7 +16,7 @@ const ShopingCart = ({ data }) => {
     const localData = JSON.parse(localStorage.getItem('data'));
     if (localData !== null && localData !== undefined && localData.length !== 0)
       setItems(localData);
-    else setItems([]);
+    else setItems(data);
   }, []);
 
   const updateQuantity = (id, update) => {
