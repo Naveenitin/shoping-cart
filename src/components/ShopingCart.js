@@ -10,13 +10,13 @@ const ShopingCart = ({ data }) => {
     item.qty = 1;
   });
 
-  const [items, setItems] = useState([]);
+  const [items, setItems] = useState(data);
 
   useEffect(() => {
     const localData = JSON.parse(localStorage.getItem('data'));
     if (localData !== null && localData !== undefined && localData.length !== 0)
       setItems(localData);
-    else setItems(data);
+    
   }, []);
 
   const updateQuantity = (id, update) => {
